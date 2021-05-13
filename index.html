@@ -33,9 +33,8 @@
             <ul class="list-group m-2">
             <li v-for="pokemon in pokemonList" :key="pokemon.id" class="list-group-item d-flex justify-content-between">
                 <span>
-                    <strong>{{ pokemon.name }}</strong>:
-                    {{ pokemon.typ1 }},
-                    {{ pokemon.typ2 }} ({{ pokemon.gender }}), {{ attackenliste(pokemon) }}
+                    <strong>{{ pokemon.name }}</strong>:                    
+                    {{ pokemon.typ }} ({{ pokemon.gender }}), Attacken: {{ attackenliste(pokemon) }}
                 </span>
                 <span>
                 <button @click="buttonUpdate(pokemon.id)" class="btn btn-secondary mr-2">update</button>
@@ -55,26 +54,15 @@
             </div>
 
             <div class="form-group bg-light rounded m-2 p-2">
-            <h3>Typ</h3>
-            <label for="selectTyp1">Erster Typ</label>
-            <select v-model="newPokemon.typ1" id="selectTyp1" class="form-control">
+            <h3>Typ</h3>            
+            <select v-model="newPokemon.typ" id="selectTyp" class="form-control">
                 <option>Feuer</option>
                 <option>Normal</option>
                 <option>Wasser</option>
                 <option>Elektro</option>
                 <option>Pflanze</option>
                 <option>Eis</option>
-            </select>
-
-            <label for="selectTyp2">Zweiter Typ</label>
-            <select v-model="newPokemon.typ2" id="selectTyp2" class="form-control">
-                <option>Feuer</option>
-                <option>Normal</option>
-                <option>Wasser</option>
-                <option>Elektro</option>
-                <option>Pflanze</option>
-                <option>Eis</option>
-            </select>
+            </select>            
             </div>
 
             <div class="form-group bg-light rounded m-2 p-2">
@@ -132,75 +120,63 @@
             </div>
 
             <div class="form-group bg-light rounded m-2 p-2">
-            <h3>Typ</h3>
-            <label for="selectTyp1">Erster Typ</label>
-            <select v-model="updatePokemon.typ1" class="form-control" id="selectTyp1">
-                <option>Feuer</option>
-                <option>Normal</option>
-                <option>Wasser</option>
-                <option>Elektro</option>
-                <option>Pflanze</option>
-                <option>Eis</option>
-            </select>
-
-            <label for="selectTyp2">Zweiter Typ</label>
-            <select v-model="updatePokemon.typ2" class="form-control" id="selectTyp2">
-                <option>Feuer</option>
-                <option>Normal</option>
-                <option>Wasser</option>
-                <option>Elektro</option>
-                <option>Pflanze</option>
-                <option>Eis</option>
-            </select>
+                <h3>Typ</h3>
+                <select v-model="updatePokemon.typ" class="form-control" id="selectTyp">
+                    <option>Feuer</option>
+                    <option>Normal</option>
+                    <option>Wasser</option>
+                    <option>Elektro</option>
+                    <option>Pflanze</option>
+                    <option>Eis</option>
+                </select>            
             </div>
 
             <div class="form-group bg-light rounded m-2 p-2">
-            <h3>Geschlecht</h3>
-            <div class="form-check form-check-inline">
-                <input v-model="updatePokemon.gender" class="form-check-input" type="radio" name="radioGender" id="radioGenderM" 
-                    value="m">
-                <label for="radioGenderM" class="form-check-label">m</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input v-model="updatePokemon.gender" class="form-check-input" type="radio" name="radioGender" id="radioGenderW" 
-                    value="w">
-                <label for="radioGenderW" class="form-check-label">w</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="radioGender" id="radioGenderD" v-model="updatePokemon.gender"
-                    value="d">
-                <label for="radioGenderD" class="form-check-label">d</label>
-            </div>
+                <h3>Geschlecht</h3>
+                <div class="form-check form-check-inline">
+                    <input v-model="updatePokemon.gender" class="form-check-input" type="radio" name="radioGender" id="radioGenderM" 
+                        value="m">
+                    <label for="radioGenderM" class="form-check-label">m</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input v-model="updatePokemon.gender" class="form-check-input" type="radio" name="radioGender" id="radioGenderW" 
+                        value="w">
+                    <label for="radioGenderW" class="form-check-label">w</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radioGender" id="radioGenderD" v-model="updatePokemon.gender"
+                        value="d">
+                    <label for="radioGenderD" class="form-check-label">d</label>
+                </div>
             </div>
 
             <div class="form-group bg-light rounded m-2 p-2">
-            <h3>Attacken</h3>
-            <div class="form-check">
-                <input v-model="updatePokemon.donnerblitz" class="form-check-input" type="checkbox" id="checkDonnerblitz">
-                <label for="checkDonnerblitz" class="form-check-label">
-                    Donnerblitz
-                </label>
+                <h3>Attacken</h3>
+                <div class="form-check">
+                    <input v-model="updatePokemon.donnerblitz" class="form-check-input" type="checkbox" id="checkDonnerblitz">
+                    <label for="checkDonnerblitz" class="form-check-label">
+                        Donnerblitz
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input v-model="updatePokemon.voltoball" class="form-check-input" type="checkbox" id="checkVoltoball">
+                    <label for="checkVoltoball" class="form-check-label">
+                        Voltoball
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input v-model="updatePokemon.surfer" class="form-check-input" type="checkbox" id="checkSurfer">
+                    <label for="checkSurfer" class="form-check-label">
+                        Surfer
+                    </label>
+                </div>
             </div>
-            <div class="form-check">
-                <input v-model="updatePokemon.voltoball" class="form-check-input" type="checkbox" id="checkVoltoball">
-                <label for="checkVoltoball" class="form-check-label">
-                    Voltoball
-                </label>
-            </div>
-            <div class="form-check">
-                <input v-model="updatePokemon.surfer" class="form-check-input" type="checkbox" id="checkSurfer">
-                <label for="checkSurfer" class="form-check-label">
-                    Surfer
-                </label>
-            </div>
-        </div>
 
-        <div class="d-flex justify-content-end m-2">
-            <button @click="buttonCancel" class="btn btn-warning mr-2">Abbrechen</button>
-            <button @click="buttonAenderungenSpeichern(updatePokemon.id)" class="btn btn-primary">Änderungen speichern</button>
+            <div class="d-flex justify-content-end m-2">
+                <button @click="buttonCancel" class="btn btn-warning mr-2">Abbrechen</button>
+                <button @click="buttonAenderungenSpeichern(updatePokemon.id)" class="btn btn-primary">Änderungen speichern</button>
+            </div>
         </div>
-        </div>
-
     </div>    
     <script src="lib/vue-3-0-5.js"></script>
     <script src="app.js"></script>

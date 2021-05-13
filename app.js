@@ -94,8 +94,7 @@ const PokemonApp = {
             // Standardwerte für neues Pokemon einstellen
             this.newPokemon = {                   
                 name: 'Pikachu',
-                typ1: 'Wasser',
-                typ2: 'Elektro',
+                typ: 'Wasser',
                 gender: 'w',
                 donnerblitz: false,
                 voltoball: true,
